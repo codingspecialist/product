@@ -26,17 +26,11 @@ public class ProductController {
         return "main"; // request 새로 만들어짐 -> 덮어쒸움. (프레임워크)
     }
 
-    @GetMapping("/api/product")
-    @ResponseBody
-    public List<Product> apiFindAllProduct() {
-        List<Product> productList = productRepository.findAll();
-        return productList;
-    }
-
-    @GetMapping("/api/product/{id}")
-    @ResponseBody
-    public Product apiFindOneProduct(@PathVariable int id) {
+    // 이거 완성해보세요. detail.jsp 만들어서!!
+    @GetMapping("/product/{id}")
+    public String findOneProduct(@PathVariable int id, Model model) {
         Product product = productRepository.findOne(id);
-        return product;
+
+        return "detail";
     }
 }
