@@ -15,4 +15,8 @@
 	<insert id="insert">
 		insert into product(name, price, qty, createdAt) values(#{name}, #{price}, #{qty}, now())
 	</insert>
+
+	<delete id="delete">
+		delete from product where id = #{id}
+	</delete>
 </mapper>
