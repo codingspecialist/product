@@ -8,6 +8,11 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Document</title>
+            <style>
+                .flex_box {
+                    display: flex;
+                }
+            </style>
         </head>
 
         <body>
@@ -21,9 +26,14 @@
             </ul>
             <h1>상품 상세보기 페이지</h1>
             <hr />
-            <form action="/product/${p.id}/delete" method="post">
-                <button type="submit">삭제</button>
-            </form>
+            <div class="flex_box">
+                <form action="/product/${p.id}/updateForm" method="get">
+                    <button type="submit">수정</button>
+                </form>
+                <form action="/product/${p.id}/delete" method="post">
+                    <button type="submit">삭제</button>
+                </form>
+            </div>
             <table border="1">
                 <tr>
                     <th>번호</th>

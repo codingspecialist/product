@@ -49,7 +49,6 @@ public class ProductController {
     @GetMapping("/dispatcher")
     public void dispatcher(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.setAttribute("name", "metacoding");
         RequestDispatcher dis = request.getRequestDispatcher("/test");
         dis.forward(request, response);
@@ -94,4 +93,26 @@ public class ProductController {
             return "redirect:/product/" + id;
         }
     }
+
+    @GetMapping("/product/{id}/updateForm")
+    public String updateForm(@PathVariable int id, Model model) {
+        Product product = productRepository.findOne(id);
+        model.addAttribute("p", product);
+        return "product/updateForm";
+    }
+
+    @PostMapping("/product/{id}/update")
+    public String update(
+            @PathVariable int id,
+            String name,
+            int price,
+            int qty) {
+        int result = productRepository.update(id, name, price, qty);
+        if (result == 1) {
+            return "redirect:/product/" + id;
+        } else {
+            return "redirect:/product/" + id + "/updateForm";
+        }
+    }
+
 }

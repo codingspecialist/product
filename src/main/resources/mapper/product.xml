@@ -19,4 +19,12 @@
 	<delete id="delete">
 		delete from product where id = #{id}
 	</delete>
+
+	<update id="update">
+		update product 
+		set name = #{name}, 
+		    price = #{price},
+			qty = #{qty}
+		where id = #{id}
+	</update>
 </mapper>
