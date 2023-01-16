@@ -5,10 +5,14 @@
 
 <mapper namespace="shop.mtcoding.orange2.model.ProductRepository">
 	<select id="findAll" resultType="shop.mtcoding.orange2.model.Product">
-		select * from product
+		select * from product order by id desc
 	</select>
 	
 	<select id="findOne" resultType="shop.mtcoding.orange2.model.Product">
 		select * from product where id = #{id}
 	</select>
+
+	<insert id="insert">
+		insert into product(name, price, qty, createdAt) values(#{name}, #{price}, #{qty}, now())
+	</insert>
 </mapper>

@@ -11,8 +11,19 @@
         </head>
 
         <body>
-            <h1>상품목록 페이지</h1>
+            <ul>
+                <li>
+                    <a href="/">홈</a>
+                </li>
+                <li>
+                    <a href="/product/addForm">상품등록</a>
+                </li>
+            </ul>
+            <h1>상품 상세보기 페이지</h1>
             <hr />
+            <form action="/product/${p.id}/delete" method="post">
+                <button type="submit">삭제</button>
+            </form>
             <table border="1">
                 <tr>
                     <th>번호</th>
@@ -21,17 +32,13 @@
                     <th>재고</th>
                     <th>등록일</th>
                 </tr>
-                <c:forEach items="${productList}" var="product">
                 <tr>
-                    <td>${product.id}</td>
-                    <td>${product.name}</td>
-                    <td>${product.price}</td>
-                    <td>${product.qty}</td>
-                    <td>${product.createdAt}</td>
+                    <td>${p.id}</td>
+                    <td>${p.name}</td>
+                    <td>${p.price}</td>
+                    <td>${p.qty}</td>
+                    <td>${p.createdAt}</td>
                 </tr>
-                </c:forEach>
-
-
             </table>
         </body>
 
